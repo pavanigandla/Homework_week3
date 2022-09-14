@@ -1,0 +1,142 @@
+    1  read -p "Enter the file name : " file
+    2  read -p "Enter the string to search for in the file : " str
+    3  grep -n "^\t" $file | { grep -v grep || true; }
+    4  read -p "Enter the file name : " file
+    5  read -p "Enter the string to search for in the file : " str
+    6  grep -n "^\t" $file | { grep -v grep || true; }
+    7  #!/bin/bash
+    8  read -p "Enter the file name : " file
+    9  read -p "Enter the string to search for in the file : " str
+   10  grep -n "^\t" $file | { grep -v grep || true; }
+   11  vi show.sh
+   12  bash show.sh testcases/sample_input.py
+   13  ls
+   14  vi show.sh
+   15  bash show.sh testcases/sample_input.py
+   16  vi fix.sh
+   17  bash fix.sh testcase/sample_input.py
+   18  vi bash.sh
+   19  ls
+   20  rm bash.sh
+   21  ls
+   22  vi show.py
+   23  ls
+   24  rm show.py
+   25  vi show.sh
+   26  bash show.sh testcase/sample_input.py
+   27  vi show.sh
+   28  bash show.sh testcase/sample_input.py
+   29  vi show.sh
+   30  bash show.sh testcase/sample_input.py
+   31  vi show.sh
+   32  bash show.sh testcase/sample_input.py
+   33  vi show.sh
+   34  git status
+   35  git add fix.sh
+   36  git commit -m "test"
+   37  git push
+   38  vi show.sh
+   39  # Please add "source /path/to/bash-autocomplete.sh" to your .bashrc to use this.
+   40  _clang_filedir() {   _filedir 2> /dev/null || COMPREPLY=( $( compgen -f ) ); }
+   41  _clang() {   local cur prev words cword arg flags w1 w2   _init_completion -n 2> /dev/null;   if [[ "$?" != 0 ]]; then     COMPREPLY=();     cword=$COMP_CWORD;     cur="${COMP_WORDS[$cword]}";   fi;    w1="${COMP_WORDS[$cword - 1]}";   if [[ $cword > 1 ]]; then     w2="${COMP_WORDS[$cword - 2]}";   fi;    for i in `seq 1 $cword`; do     if [[ $i == $cword || "${COMP_WORDS[$(($i+1))]}" == '=' ]]; then       arg="$arg${COMP_WORDS[$i]}";     else       arg="$arg${COMP_WORDS[$i]},";     fi;   done;    eval local path=${COMP_WORDS[0]}   flags=$( "$path" --autocomplete="$arg" 2>/dev/null | sed -e $'s/\t.*//' )   if [[ "$?" != 0 ]]; then     _clang_filedir;     return;   fi;    if [[ "$flags" == "$(echo -e '\n')" ]]; then     [[ "$cur" == '=' || "$cur" == -*= ]] && cur="";     _clang_filedir;   elif [[ "$cur" == '=' ]]; then     COMPREPLY=( $( compgen -W "$flags" -- "") );   else     [[ "${flags: -1}" == '=' ]] && compopt -o nospace 2> /dev/null;     COMPREPLY=( $( compgen -W "$flags" -- "$cur" ) );   fi; }
+   42  complete -F _clang clang
+   43  # Please add "source /path/to/bash-autocomplete.sh" to your .bashrc to use this.
+   44  _clang_filedir() {   _filedir 2> /dev/null || COMPREPLY=( $( compgen -f ) ); }
+   45  _clang() {   local cur prev words cword arg flags w1 w2   _init_completion -n 2> /dev/null;   if [[ "$?" != 0 ]]; then     COMPREPLY=();     cword=$COMP_CWORD;     cur="${COMP_WORDS[$cword]}";   fi;    w1="${COMP_WORDS[$cword - 1]}";   if [[ $cword > 1 ]]; then     w2="${COMP_WORDS[$cword - 2]}";   fi;    for i in `seq 1 $cword`; do     if [[ $i == $cword || "${COMP_WORDS[$(($i+1))]}" == '=' ]]; then       arg="$arg${COMP_WORDS[$i]}";     else       arg="$arg${COMP_WORDS[$i]},";     fi;   done;    eval local path=${COMP_WORDS[0]}   flags=$( "$path" --autocomplete="$arg" 2>/dev/null | sed -e $'s/\t.*//' )   if [[ "$?" != 0 ]]; then     _clang_filedir;     return;   fi;    if [[ "$flags" == "$(echo -e '\n')" ]]; then     [[ "$cur" == '=' || "$cur" == -*= ]] && cur="";     _clang_filedir;   elif [[ "$cur" == '=' ]]; then     COMPREPLY=( $( compgen -W "$flags" -- "") );   else     [[ "${flags: -1}" == '=' ]] && compopt -o nospace 2> /dev/null;     COMPREPLY=( $( compgen -W "$flags" -- "$cur" ) );   fi; }
+   46  complete -F _clang clang
+   47  # Please add "source /path/to/bash-autocomplete.sh" to your .bashrc to use this.
+   48  _clang_filedir() {   _filedir 2> /dev/null || COMPREPLY=( $( compgen -f ) ); }
+   49  _clang() {   local cur prev words cword arg flags w1 w2   _init_completion -n 2> /dev/null;   if [[ "$?" != 0 ]]; then     COMPREPLY=();     cword=$COMP_CWORD;     cur="${COMP_WORDS[$cword]}";   fi;    w1="${COMP_WORDS[$cword - 1]}";   if [[ $cword > 1 ]]; then     w2="${COMP_WORDS[$cword - 2]}";   fi;    for i in `seq 1 $cword`; do     if [[ $i == $cword || "${COMP_WORDS[$(($i+1))]}" == '=' ]]; then       arg="$arg${COMP_WORDS[$i]}";     else       arg="$arg${COMP_WORDS[$i]},";     fi;   done;    eval local path=${COMP_WORDS[0]}   flags=$( "$path" --autocomplete="$arg" 2>/dev/null | sed -e $'s/\t.*//' )   if [[ "$?" != 0 ]]; then     _clang_filedir;     return;   fi;    if [[ "$flags" == "$(echo -e '\n')" ]]; then     [[ "$cur" == '=' || "$cur" == -*= ]] && cur="";     _clang_filedir;   elif [[ "$cur" == '=' ]]; then     COMPREPLY=( $( compgen -W "$flags" -- "") );   else     [[ "${flags: -1}" == '=' ]] && compopt -o nospace 2> /dev/null;     COMPREPLY=( $( compgen -W "$flags" -- "$cur" ) );   fi; }
+   50  complete -F _clang clang
+   51  git pull origin master
+   52  git pull origin master
+   53  git pull origin master https://github.com/pavanigandla/PAT_Assignment4.git
+   54  git pull origin master From https://github.com/pavanigandla/PAT_Assignment4.git
+   55  git clone "https://github.com/pavanigandla/PAT_Assignment4.git"
+   56  git add .
+   57  git add .
+   58  git clone"https://github.com/pavanigandla/PAT_AVLTree_ASSIGNMENT.git"
+   59  git add .
+   60  git add .
+   61  git commit
+   62  git push 
+   63  git push
+   64  git add .
+   65  git commit
+   66  git push
+   67  git add .
+   68  git commit
+   69  git push
+   70  git clone "https://github.com/pavanigandla/PAT_AVLTree_ASSIGNMENT.git"
+   71  git add .
+   72  git commit
+   73  git push
+   74  git add
+   75  git .add
+   76  git --help
+   77  git add .
+   78  git commit
+   79  git add ./Python_scripts
+   80  git fetch remote_repo branch_name
+   81  git pull "
+   82  git add .
+   83  git commit
+   84  git push
+   85  git pull "https://github.com/krithikashreeL/Analysis-on-OMPI.git"
+   86  git clone "https://github.com/krithikashreeL/Analysis-on-OMPI.git"
+   87  cd 
+   88  git pull originmaster
+   89  git pull originmaster From https://github.com/krithikashreeL/Analysis-on-OMPI.git
+   90  git pull originmaster
+   91  git pull origin master
+   92  cd Analysis-on-OMPI
+   93  git checkout -b new_branch
+   94  git add .
+   95  git commit -m "Adding a test file to new_branch"
+   96  git push
+   97  git clone "https://github.com/pavanigandla/Analysis-on-OMPI.git"
+   98  git clone "https://github.com/pavanigandla/Analysis-on-OMPI.git"
+   99  git add .
+  100  git add .
+  101  git commit
+  102  git push
+  103  git add .
+  104  git commit
+  105  git push
+  106  git status
+  107  mkdir SEWeek3
+  108  ls
+  109  cd SEWeek3/
+  110  ls
+  111  git init
+  112  touch newfile.txt
+  113  ls
+  114  nano newfile.txt
+  115  git status
+  116  git add
+  117  git add newfile.txt
+  118  git status
+  119  git commit
+  120  git push
+  121  git push https://github.com/pavanigandla/SWE.git
+  122  cd SEWeek3/
+  123  git status
+  124  git init
+  125  ls
+  126  git status
+  127  git status newfile.txt
+  128  nano newfile.txt
+  129  git status
+  130  git add newfile.txt
+  131  git status
+  132  git commit
+  133  mkdir Homework_week3
+  134  cd Homework_week3/
+  135  git init
+  136  touch newfile.txt
+  137  nano newfile.txt
+  138  git status
+  139  git add newfile.txt
+  140  git status
+  141  git commit
+  142  history>myhomeworkhistory
